@@ -1,0 +1,5 @@
+/comment-service/node_modules
+/comment-service/.env
+/member-service/node_modules
+/member-service/.env
+.env

@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${MemberService}
+
+  web:
+    image: member-service
+    build:
+      context: member-service
+      dockerfile: Dockerfile
+    container_name: member-service
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - postgres
+    links:
+      - "postgres"
+    restart: on-failure
