@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --detectOpenHandles",
+    "start": "node ./bin/www",
+    "setup": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +15,11 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "jest": "^28.1.1",
+    "morgan": "^1.10.0",
     "pg": "^8.7.3",
-    "sequelize": "^6.20.1"
+    "sequelize": "^6.20.1",
+    "sequelize-cli": "^6.4.1",
+    "supertest": "^6.2.3"
   }
 }

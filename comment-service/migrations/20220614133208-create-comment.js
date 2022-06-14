@@ -14,6 +14,9 @@ module.exports = {
       comment: {
         type: Sequelize.STRING
       },
+      softDeleted : {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

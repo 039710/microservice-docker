@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   Comment.init({
     orgName: DataTypes.STRING,
-    comment: DataTypes.STRING
+    comment: DataTypes.STRING,
+    softDeleted: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Comment',
