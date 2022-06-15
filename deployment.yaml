@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels:
+    app: deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deployment
+  template:
+    metadata:
+      labels:
+        app: deployment
+    spec:
+      containers:
+      - name: postgres
+        image: postgres
+        # imagePullPolicy: "IfNotPresent"
+        envFrom:
+        - configMapRef:
+            name: postgres-config
+        ports:
+        - containerPort: 5432
+      - name: member-service
+        image: mustain5/member-service
+        # imagePullPolicy: "IfNotPresent"
+        ports:
+        - containerPort: 3333
+      - name : comment-service
+        image: mustain5/comment-service
+        # imagePullPolicy: "IfNotPresent"
+        ports:
+        - containerPort: 3334
+      

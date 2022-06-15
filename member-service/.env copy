@@ -4,4 +4,4 @@ DB_NAME=postgres
 DB_HOST=localhost
 DB_PORT=5432
 DB_DIALECT=postgres
-PORT = 3334
+PORT = 3333

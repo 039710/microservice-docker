@@ -1,6 +1,7 @@
 version: '3.7'
 
 services:
+
   postgres:
     image: postgres
     container_name: postgres
@@ -9,16 +10,31 @@ services:
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${MemberService}
+      POSTGRES_DB: ${DB_HOST}
 
-  web:
-    image: member-service
+  member-service:
+    image: mustain5/member-service:latest
     build:
       context: member-service
       dockerfile: Dockerfile
     container_name: member-service
     ports:
-      - "${PORT}:${PORT}"
+      - "${PORT_MEMBER}:${PORT_MEMBER}"
+    depends_on:
+      - postgres
+      - comment-service
+    links:
+      - postgres
+    restart: on-failure
+
+  comment-service:
+    image: mustain5/comment-service:latest
+    build:
+      context: comment-service
+      dockerfile: Dockerfile
+    container_name: comment-service
+    ports:
+      - "${PORT_COMMENT}:${PORT_COMMENT}"
     depends_on:
       - postgres
     links:

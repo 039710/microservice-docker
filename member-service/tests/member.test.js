@@ -4,7 +4,7 @@ const app = require("../index")
 
 test('Get organisation member of xendit should return all member of xendit [CASE SUCCESS]', () => {
   return supertest(app)
-    .get('/xendit/members')
+    .get('/orgs/xendit/members')
     .expect(200)
     .expect('Content-Type', /json/)
     .expect(res => {
@@ -15,11 +15,10 @@ test('Get organisation member of xendit should return all member of xendit [CASE
 });
 test('Get organisation member of non exist organisation should return empty result [CASE SUCCESS]', () => {
   return supertest(app)
-    .get('/nonExist/members')
+    .get("/orgs/nonExist/members")
     .expect(200)
-    .expect('Content-Type', /json/)
-    .expect(res => {
+    .expect("Content-Type", /json/)
+    .expect((res) => {
       expect(res.body.members.length).toBe(0);
-    }
-  );
+    });
 });
