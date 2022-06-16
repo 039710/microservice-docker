@@ -1,36 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deployment
+  name: deployment-member
   labels:
-    app: deployment
+    app: deployment-member
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: deployment
+      app: deployment-member
   template:
     metadata:
       labels:
-        app: deployment
+        app: deployment-member
     spec:
       containers:
       - name: postgres
         image: postgres
-        # imagePullPolicy: "IfNotPresent"
         envFrom:
         - configMapRef:
-            name: postgres-config
+            name: postgres-member-config
         ports:
         - containerPort: 5432
-      - name: member-service
+      - name : member-service
         image: mustain5/member-service
-        # imagePullPolicy: "IfNotPresent"
-        ports:
-        - containerPort: 3333
-      - name : comment-service
-        image: mustain5/comment-service
-        # imagePullPolicy: "IfNotPresent"
         ports:
         - containerPort: 3334
       

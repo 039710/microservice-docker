@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    networks:
+      - comment-net
+
+  comment-service:
+    image: mustain5/comment-service
+    build: .
+    ports:
+      - ${PORT}:3333
+    links:
+      - postgres
+    depends_on:
+      - postgres
+    networks:
+      - comment-net
+
+networks:
+  comment-net:

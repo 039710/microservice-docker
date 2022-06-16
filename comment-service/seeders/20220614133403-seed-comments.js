@@ -20,23 +20,23 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        comment: 'This is a comment',
+        comment: 'This is a comment 2',
         orgName: "xendit",
         softDeleted : false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        comment: 'This is a comment',
+        comment: 'This is a comment 3',
         orgName: "xendit",
         softDeleted : false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        comment: 'This is a comment',
+        comment: 'This is a comment 4',
         orgName: "xendit",
-        softDeleted : false,
+        softDeleted : true,
         createdAt: new Date(),
         updatedAt: new Date()
       }

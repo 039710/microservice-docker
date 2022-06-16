@@ -6,14 +6,13 @@ metadata:
     app: deployment
 spec:
   rules:
-    - host: nginx.mustain.local
-      http:
-        paths:
-          - path: /members
-            backend:
-              serviceName: members-service
-              servicePort: 3333
-          - path: /comments
-            backend:
-              serviceName: comment-service
-              servicePort: 3334
+  - http:
+      paths:
+        - path: /members
+          backend:
+            serviceName: members-service
+            servicePort: 3333
+        - path: /comments
+          backend:
+            serviceName: comment-service
+            servicePort: 3334

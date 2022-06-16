@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-case": "jest --detectOpenHandles",
+    "test": "jest --detectOpenHandles --forceExit",
     "start": "node ./bin/www",
     "setup": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },

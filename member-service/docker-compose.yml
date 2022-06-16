@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - ${DB_PORT}:5432
+    networks:
+      member-net:
+
+  member-service:
+    image: mustain5/member-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: member-service
+    ports:
+      - ${PORT}:3334
+    links:
+      - postgres
+    depends_on:
+      - postgres
+    restart: on-failure
+    networks:
+      member-net:
+
+networks:
+  member-net:
