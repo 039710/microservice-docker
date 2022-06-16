@@ -18,7 +18,7 @@ services:
     image: mustain5/comment-service
     build: .
     ports:
-      - ${PORT}:3333
+      - ${PORT}:${PORT}
     links:
       - postgres
     depends_on:

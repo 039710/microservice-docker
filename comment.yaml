@@ -15,7 +15,7 @@ spec:
         app: comment
     spec:
       containers:
-      - name : comment-service
+      - name : comment
         image: mustain5/comment-service
         ports:
           - containerPort: 3334
@@ -26,10 +26,9 @@ kind: Service
 metadata:
   name: comment-service
 spec:
+  type: NodePort
   selector:
-    app: deployment
+    app: comment
   ports :
   - port: 3334
-    targetPort: 3334
-    name: comment-service
-
+    targetPort: 3334  

@@ -28,9 +28,9 @@ metadata:
   name: member-service
 spec:
   selector:
-    app: deployment
+    app: member
   ports :
-  - port: 3333
+  - name : http
+    port: 3991
+    protocol: TCP
     targetPort: 3333
-    name: member-service
-
