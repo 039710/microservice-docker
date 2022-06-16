@@ -57,7 +57,10 @@ ths instruction also can be used for deploying member-service in docker.
 
 ## Deployment
 
-This process of deployment is for windows, for linux there will be slightly different config on minikube
+This process of deployment is for windows, for linux there will be slightly different config on minikube.
+
+Before starting belows instruction, change all env in member-service folder and comment-service folder to mode PRODUCTION.
+### Instruction
 
 1. start minikube in windows with docker engine desktop installed wih powershell elevated with administrator rule
 option --driver=hyperv will automatically map the virtual network to host, so we can access it directly
