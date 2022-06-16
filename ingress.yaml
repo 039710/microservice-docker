@@ -1,18 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-deployment
-  labels:
-    app: deployment
+  name: ingress
 spec:
   rules:
-  - http:
-      paths:
-        - path: /members
-          backend:
-            serviceName: members-service
-            servicePort: 3333
-        - path: /comments
-          backend:
-            serviceName: comment-service
-            servicePort: 3334
+    - host: nginx.mustain.local
+      http:
+        paths:
+          - path: /comments
+            pathType: Prefix
+            backend:
+              service:
+                name: comment-service
+                port:
+                  number: 3334
+          - path: /member
+            pathType: Prefix
+            backend:
+              service:
+                name: member-service
+                port:
+                  number: 3333

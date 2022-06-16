@@ -4,7 +4,7 @@ services:
 
   postgres:
     image: postgres
-    container_name: postgres
+    container_name: ${DB_HOST}
     env_file:
       - .env
     environment:
@@ -27,7 +27,7 @@ services:
     links:
       - postgres
     depends_on:
-      - postgres
+      - ${DB_HOST}
     restart: on-failure
     networks:
       member-net:
