@@ -3,23 +3,23 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /orgs$1$2/$3
 spec:
   rules:
-    - host: nginx.mustain.local
+    - host: myapp.com
       http:
         paths:
-          - path: /comments
+          - path: /orgs(/|$)(.*)/(comments)
             pathType: Prefix
             backend:
               service:
                 name: comment-service
                 port:
                   number: 3334
-          - path: /member
+          - path: /orgs(/|$)(.*)/(members)
             pathType: Prefix
             backend:
               service:
                 name: member-service
                 port:
-                  number: 3333
+                  number: 3991
