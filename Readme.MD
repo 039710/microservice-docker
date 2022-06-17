@@ -79,19 +79,19 @@ $ minikube addons list | grep ingress
 3. apply config map for postgres environment setup
 
 ```
-  $ kubectl apply -f postgres-config.yml
+  $ kubectl apply -f postgres-config.yaml
 ```
 4. deploy postgres service
 
 ```
-  $ kubectl create -f postgres.yml
+  $ kubectl create -f postgres.yaml
 ```
 ![Screenshot](/images/deploy-postgres.jpg)
 <br/>
 5. deploy member service
 
 ```
-	$ kubectl create -f member.yml
+	$ kubectl create -f member.yaml
 ```
 ![Screenshot](/images/deploy-member.jpg)
 
@@ -99,7 +99,7 @@ $ minikube addons list | grep ingress
 6. deploy comment service
 
 ```
-	$ kubectl create -f comment.yml
+	$ kubectl create -f comment.yaml
 ```
 ![Screenshot](/images/deploy-comment.jpg)
 <br/>
